@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "build": "tsc",
     "start:api": "node dist/index.js",
     "dev:api": "tsnd --respawn --transpile-only --ignore-watch  node_modules --exit-child source/index.ts"
   },
