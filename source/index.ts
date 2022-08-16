@@ -1,13 +1,18 @@
+import { PrismaClient } from '@prisma/client'
 import express from 'express'
+import cors from 'cors'
 
 const server = express()
+const prisma = new PrismaClient()
 
-server.get('/', (req, res) => {
-  res.send({
-    status: 'ok',
-  })
+server.use(cors())
+
+server.get('/', async (req, res) => {
+  const users = await prisma.user.findMany()
+
+  res.send(users)
 })
 
-server.listen(3000, () => {
-  console.log('Server is running on port 3000')
+server.listen(process.env.PORT || 3333, () => {
+  console.log(`Server is running on port ${process.env.PORT || 3333}`)
 })
