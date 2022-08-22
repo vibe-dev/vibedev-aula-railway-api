@@ -5,8 +5,9 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start:api": "node dist/index.js",
-    "dev:api": "tsnd --respawn --transpile-only --ignore-watch  node_modules --exit-child source/index.ts"
+    "prestart": "prisma generate",
+    "start": "node dist/index.js",
+    "dev": "tsnd --respawn --transpile-only --ignore-watch  node_modules --exit-child source/index.ts"
   },
   "dependencies": {
     "@prisma/client": "4.2.1",
