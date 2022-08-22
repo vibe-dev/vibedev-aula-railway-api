@@ -1,6 +1,7 @@
-import { PrismaClient } from '@prisma/client'
 import express from 'express'
 import cors from 'cors'
+
+import { PrismaClient } from '@prisma/client'
 
 const server = express()
 const prisma = new PrismaClient()
@@ -9,7 +10,6 @@ server.use(cors())
 
 server.get('/', async (req, res) => {
   const users = await prisma.user.findMany()
-
   res.send(users)
 })
 
